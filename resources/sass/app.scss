@@ -18,16 +18,12 @@
 
 @include pictos-iconmask('list');
 
-.sidenav {
-  .left, .right {
-    background-color: #666666;
-    color: #aaaaaa;
-    width: 300px;
-  }
-  .main {
-    width: 100%;
-    height: 100%; 
-    position: absolute;
-    opacity: 1;
-  }
+.feed-title {
+  font-size: 16px;
+  color: #25261e;
+}
+.pub-date {
+  font-size: 10px;
+  font-style: italic;
+  padding: 5px 0
 }

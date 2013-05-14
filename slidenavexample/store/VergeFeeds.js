@@ -1,4 +1,4 @@
-Ext.define('SlideNavigationExample.store.LhFeeds', {
+Ext.define('SlideNavigationExample.store.VergeFeeds', {
     extend: 'Ext.data.Store',
 
     config: {
@@ -16,7 +16,7 @@ Ext.define('SlideNavigationExample.store.LhFeeds', {
 
         proxy: {
             type: 'jsonp',
-            url: 'https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&q=http://feeds.feedburner.com/Lifehacker/&num=25',
+            url: 'https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&q=http://www.theverge.com/rss/index.xml/&num=25',
             reader: {
                 type: 'json',
                 rootProperty: 'responseData.feed.entries'

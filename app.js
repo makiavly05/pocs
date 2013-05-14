@@ -6,16 +6,20 @@ Ext.Loader.setPath({
 });
 //</debug>
 
+// Vars
+var _ArticleArray = [];
+
 Ext.application({
     name: 'SlideNavigationExample',
-    stores : ['TcFeeds', 'LhFeeds'],
+    stores : ['TcFeeds', 'LhFeeds', 'VergeFeeds'],
     requires: [
         'Ext.MessageBox'
     ],
 
     views: [
         'Main',
-        'Article'
+        'Article',
+        'ListingCarousel'
     ],
 
     controllers: [

@@ -15,7 +15,8 @@ Ext.define('SlideNavigationExample.view.Article', {
                     text: 'back',
                     ui: 'back',
                     handler: function() {
-                        Ext.Viewport.animateActiveItem('disclosurelist', {type:'slide', direction:'right'});
+                        Ext.Viewport.animateActiveItem(_ArticleArray[_ArticleArray.length - 1], {type:'slide', direction:'right'});
+                        console.log('back btn pressed');
                     }
                 }]
             }
