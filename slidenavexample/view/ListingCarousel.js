@@ -8,8 +8,25 @@ Ext.define('SlideNavigationExample.view.ListingCarousel', {
     config: {
         fullscreen: true,
         tpl: '{content}',
-        indicator: true,
-
+        indicator: false,
+        listeners: {
+            activeitemchange: function(container, newCard, oldCard, index){
+                var cardIndex = this.getActiveIndex();
+                // TODO (Radi) Need better approach
+                switch(cardIndex) {
+                    case 0:
+                        this.parent.items.get(0).setTitle('TechCrunch');
+                        break;
+                    case 1:
+                        this.parent.items.get(0).setTitle('Lifehacker');
+                        break;
+                    case 2:
+                        this.parent.items.get(0).setTitle('The Verge');
+                        break;
+                }
+                console.log(cardIndex);
+            }
+        },
         items: [
             {
                 xtype: 'list',
@@ -26,16 +43,30 @@ Ext.define('SlideNavigationExample.view.ListingCarousel', {
                         _ArticleArray.splice(_ArticleArray.length - 1, 1);
                         _ArticleArray.push(view.parent.parent.parent.parent);
                         var rec = view.getStore().getAt(index);
+                        var stores = view.getStore().data.items;
                         console.log(rec);
-                        var articleView = Ext.create('SlideNavigationExample.view.Article');
-                        articleView.setData(rec.data);
-                        Ext.Viewport.animateActiveItem(articleView, {type: 'cover', direction: 'left'});
+                        var articles = Ext.create('SlideNavigationExample.view.ArticleCarousel');
+                        articles.setData(rec.data);
+
+                        /*for (var i = 0, lenL = stores.length; i < lenL; i++) {
+                            var myPanel = Ext.create('Ext.Panel');
+                            myPanel.setData(stores[i].data);
+                            articles.add(myPanel);
+                        }*/
+
+                        Ext.Viewport.animateActiveItem(articles, {type: 'cover', direction: 'left'});
                     }
                 },
                 plugins: [
                     {
                         xclass: 'Ext.plugin.PullRefresh',
-                        pullRefreshText: 'Pull down for more news feeds!'
+                        pullRefreshText: 'Pull down for more news feeds!',
+                        refreshFn: function(plugin) {
+                            var store = plugin.parent.parent.getStore();
+                            if (store.hasListener('load')) {
+                                store.fireEvent('load', store, store.getData(), true);
+                            }
+                        }
                     }
                 ],
                 store: 'TcFeeds',
@@ -58,15 +89,21 @@ Ext.define('SlideNavigationExample.view.ListingCarousel', {
                         _ArticleArray.push(view.parent.parent.parent.parent);
                         var rec = view.getStore().getAt(index);
                         console.log(rec);
-                        var articleView = Ext.create('SlideNavigationExample.view.Article');
-                        articleView.setData(rec.data);
-                        Ext.Viewport.animateActiveItem(articleView, {type: 'cover', direction: 'left'});
+                        var articles = Ext.create('SlideNavigationExample.view.ArticleCarousel');
+                        articles.setData(rec.data);
+                        Ext.Viewport.animateActiveItem(articles, {type: 'cover', direction: 'left'});
                     }
                 },
                 plugins: [
                     {
                         xclass: 'Ext.plugin.PullRefresh',
-                        pullRefreshText: 'Pull down for more news feeds!'
+                        pullRefreshText: 'Pull down for more news feeds!',
+                        refreshFn: function(plugin) {
+                            var store = plugin.parent.parent.getStore();
+                            if (store.hasListener('load')) {
+                                store.fireEvent('load', store, store.getData(), true);
+                            }
+                        }
                     }
                 ],
                 store: 'LhFeeds',
@@ -89,15 +126,21 @@ Ext.define('SlideNavigationExample.view.ListingCarousel', {
                         _ArticleArray.push(view.parent.parent.parent.parent);
                         var rec = view.getStore().getAt(index);
                         console.log(rec);
-                        var articleView = Ext.create('SlideNavigationExample.view.Article');
-                        articleView.setData(rec.data);
-                        Ext.Viewport.animateActiveItem(articleView, {type: 'cover', direction: 'left'});
+                        var articles = Ext.create('SlideNavigationExample.view.ArticleCarousel');
+                        articles.setData(rec.data);
+                        Ext.Viewport.animateActiveItem(articles, {type: 'cover', direction: 'left'});
                     }
                 },
                 plugins: [
                     {
                         xclass: 'Ext.plugin.PullRefresh',
-                        pullRefreshText: 'Pull down for more news feeds!'
+                        pullRefreshText: 'Pull down for more news feeds!',
+                        refreshFn: function(plugin) {
+                            var store = plugin.parent.parent.getStore();
+                            if (store.hasListener('load')) {
+                                store.fireEvent('load', store, store.getData(), true);
+                            }
+                        }
                     }
                 ],
                 store: 'VergeFeeds',

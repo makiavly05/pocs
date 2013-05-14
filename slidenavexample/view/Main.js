@@ -109,6 +109,7 @@ Ext.define("SlideNavigationExample.view.Main", {
             slideButton: true,
             items: [{
                 xtype: 'toolbar',
+                cls: 'titlebar',
                 title: 'TechCrunch',
                 docked: 'top'
             },{
