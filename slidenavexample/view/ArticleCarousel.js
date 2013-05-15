@@ -10,6 +10,10 @@ Ext.define('SlideNavigationExample.view.ArticleCarousel', {
             sideSlideOffset = window.innerWidth * 0.1,
             slideNavComponent = Ext.getCmp('side-slide-nav');
 
+        if (e.target.className.indexOf('toolbar') > -1) {
+            return
+        }
+
         if (slideNavComponent) {
             slideNavComponent.container.dragAllowedForced = false;
             if (slideNavComponent.isOpened()) {
@@ -63,11 +67,12 @@ Ext.define('SlideNavigationExample.view.ArticleCarousel', {
             {
                 xtype: 'toolbar',
                 docked: 'top',
+                cls: 'slidtoolbar',
                 items: [{
                     text: 'back',
                     ui: 'back',
                     handler: function() {
-                        _ArticleArray[_ArticleArray.length - 1].animateActiveItem(_ArticleArray[_ArticleArray.length - 1], {type:'slide', direction:'right'});
+                        _ArticleArray[_ArticleArray.length - 1].animateActiveItem(Ext.getCmp('side-slide-nav')._cache[0], {type:'slide', direction:'right'});
                         console.log('back btn pressed');
                     }
                 }]

@@ -26,7 +26,7 @@ Ext.define("SlideNavigationExample.view.Main", {
          *  will be draggable.  To disable draggin all together, set this
          *  to false.
          */
-        slideSelector: '',
+        slideSelector: 'slidtoolbar',
 
         /**
          *  Container must be dragged 10 pixels horizontally before allowing

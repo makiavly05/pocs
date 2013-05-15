@@ -85,8 +85,6 @@ Ext.define('SlideNavigationExample.view.ListingCarousel', {
                         // TODO (Radi) Need to find better way to get reference of the root view
                         _ArticleArray.push(view.parent.parent.parent);
 
-                        var rec = view.getStore().getAt(index);
-                        _LISTING = view.getItemAt(index);
                         var stores = view.getStore().data.items;
                         var articles = Ext.create('SlideNavigationExample.view.ArticleCarousel');
 
@@ -139,11 +137,9 @@ Ext.define('SlideNavigationExample.view.ListingCarousel', {
                         _ArticleArray.splice(_ArticleArray.length - 1, 1);
 
                         // TODO (Radi) Need to find better way to get reference of the root view
-                        _ArticleArray.push(view.parent.parent.parent.parent);
+                        _ArticleArray.push(view.parent.parent.parent);
 
-                        var rec = view.getStore().getAt(index);
                         var stores = view.getStore().data.items;
-                        console.log(rec);
                         var articles = Ext.create('SlideNavigationExample.view.ArticleCarousel');
 
                         for (var i = 0, lenL = stores.length; i < lenL; i++) {
@@ -160,8 +156,8 @@ Ext.define('SlideNavigationExample.view.ListingCarousel', {
                             articles.add([myPanel]);
                         }
                         articles.setActiveItem(index);
-
-                        Ext.Viewport.animateActiveItem(articles, {type: 'cover', direction: 'left'});
+                        console.log(_ArticleArray[0]);
+                        view.parent.parent.parent.animateActiveItem(articles, {type: 'cover', direction: 'left'});
                     }
                     /*itemtap: function(view, index, item, e) {
                         _ArticleArray.splice(_ArticleArray.length - 1, 1);
@@ -204,11 +200,9 @@ Ext.define('SlideNavigationExample.view.ListingCarousel', {
                         _ArticleArray.splice(_ArticleArray.length - 1, 1);
 
                         // TODO (Radi) Need to find better way to get reference of the root view
-                        _ArticleArray.push(view.parent.parent.parent.parent);
+                        _ArticleArray.push(view.parent.parent.parent);
 
-                        var rec = view.getStore().getAt(index);
                         var stores = view.getStore().data.items;
-                        console.log(rec);
                         var articles = Ext.create('SlideNavigationExample.view.ArticleCarousel');
 
                         for (var i = 0, lenL = stores.length; i < lenL; i++) {
@@ -225,8 +219,8 @@ Ext.define('SlideNavigationExample.view.ListingCarousel', {
                             articles.add([myPanel]);
                         }
                         articles.setActiveItem(index);
-
-                        Ext.Viewport.animateActiveItem(articles, {type: 'cover', direction: 'left'});
+                        console.log(_ArticleArray[0]);
+                        view.parent.parent.parent.animateActiveItem(articles, {type: 'cover', direction: 'left'});
                     }
                 },
                 plugins: [
