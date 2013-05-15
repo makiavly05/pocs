@@ -11,6 +11,7 @@ Ext.define('SlideNavigationExample.view.ArticleCarousel', {
     config: {
         fullscreen: true,
         tpl: '{content}',
+        layout: 'card',
         scrollable: {
             direction: 'vertical',
             directionLock: true
