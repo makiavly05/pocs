@@ -1,6 +1,7 @@
 Ext.define("SlideNavigationExample.view.Main", {
     extend: 'Ext.ux.slidenavigation.View',
-
+    xtype: 'slidingnav',
+    id: 'side-slide-nav',
     requires: [
         'Ext.Container',
         'Ext.MessageBox',
@@ -25,7 +26,7 @@ Ext.define("SlideNavigationExample.view.Main", {
          *  will be draggable.  To disable draggin all together, set this
          *  to false.
          */
-        slideSelector: 'x-toolbar',
+        slideSelector: '',
 
         /**
          *  Container must be dragged 10 pixels horizontally before allowing
@@ -33,7 +34,7 @@ Ext.define("SlideNavigationExample.view.Main", {
          *
          *  @since 0.2.2
          */
-        containerSlideDelay: -1,
+        containerSlideDelay: 10,
 
         /**
          *  Time in milliseconds to animate the closing of the container

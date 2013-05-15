@@ -1,5 +1,45 @@
 Ext.define('SlideNavigationExample.view.ListingCarousel', {
     extend: 'Ext.carousel.Carousel',
+
+    onDragStart: function(e) {
+        var direction = this.getDirection(),
+            absDeltaX = e.absDeltaX,
+            absDeltaY = e.absDeltaY,
+            directionLock = this.getDirectionLock(),
+            sideSlideOffset = window.innerWidth * 0.1,
+            slideNavComponent = Ext.getCmp('side-slide-nav');
+
+        if (slideNavComponent) {
+            slideNavComponent.container.dragAllowedForced = false;
+            if (slideNavComponent.isOpened()) {
+                return;
+            }
+            if (e.pageX < sideSlideOffset) {
+                return;
+            } else {
+                slideNavComponent.container.dragAllowedForced = true;
+            }
+        }
+
+        this.isDragging = true;
+
+        if (directionLock) {
+            if ((direction === 'horizontal' && absDeltaX > absDeltaY)
+                || (direction === 'vertical' && absDeltaY > absDeltaX)) {
+                e.stopPropagation();
+            }
+            else {
+                this.isDragging = false;
+                return;
+            }
+        }
+
+        this.getTranslatable().stopAnimation();
+
+        this.dragStartOffset = this.offset;
+        this.dragDirection = 0;
+    },
+
     xtype: 'listingcarousel',
     defaults: {
         styleHtmlContent: true
@@ -43,11 +83,11 @@ Ext.define('SlideNavigationExample.view.ListingCarousel', {
                         _ArticleArray.splice(_ArticleArray.length - 1, 1);
 
                         // TODO (Radi) Need to find better way to get reference of the root view
-                        _ArticleArray.push(view.parent.parent.parent.parent);
+                        _ArticleArray.push(view.parent.parent.parent);
 
                         var rec = view.getStore().getAt(index);
+                        _LISTING = view.getItemAt(index);
                         var stores = view.getStore().data.items;
-                        console.log(rec);
                         var articles = Ext.create('SlideNavigationExample.view.ArticleCarousel');
 
                         for (var i = 0, lenL = stores.length; i < lenL; i++) {
@@ -64,8 +104,8 @@ Ext.define('SlideNavigationExample.view.ListingCarousel', {
                             articles.add([myPanel]);
                         }
                         articles.setActiveItem(index);
-
-                        Ext.Viewport.animateActiveItem(articles, {type: 'cover', direction: 'left'});
+                        console.log(_ArticleArray[0]);
+                        view.parent.parent.parent.animateActiveItem(articles, {type: 'cover', direction: 'left'});
                     }
                 },
                 plugins: [

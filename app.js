@@ -8,6 +8,7 @@ Ext.Loader.setPath({
 
 // Vars
 var _ArticleArray = [];
+var _LISTING;
 
 Ext.application({
     name: 'SlideNavigationExample',
