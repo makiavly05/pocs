@@ -23,7 +23,9 @@ Ext.application({
     ],
 
     controllers: [
-        'Main'
+        'Main',
+        'ListingCarousel',
+        'ArticleCarousel'
     ],
 
     icon: {
