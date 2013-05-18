@@ -86,6 +86,7 @@ Ext.define('Ext.ux.slidenavigation.View', {
             width: 250,
             maxDrag: null,
             itemTpl: '{title}',
+            id: 'side-slide-menu',
             grouped: true,
             items: [{
                 xtype: 'toolbar',
@@ -230,6 +231,7 @@ Ext.define('Ext.ux.slidenavigation.View', {
             iconCls: 'more',
             align: this.getListPosition(),
             name: 'slidebutton',
+            id: 'slide-trigger',
             listeners: {
                 release: me.toggleContainer,
                 tap: function(button, e) {

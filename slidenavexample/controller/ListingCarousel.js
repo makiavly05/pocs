@@ -19,6 +19,8 @@ Ext.define("SlideNavigationExample.controller.ListingCarousel", {
     openArticle: function (view, index, item, e) {
         console.log('list item tapped!');
 
+        view.parent.parent.parent.setMasked({xtype: 'loadmask',indicator: true, message: 'Please wait...'});
+
         _ArticleArray.splice(_ArticleArray.length - 1, 1);
 
         // TODO (Radi) Need to find better way to get reference of the root view
@@ -42,7 +44,11 @@ Ext.define("SlideNavigationExample.controller.ListingCarousel", {
         }
         articles.setActiveItem(index);
         console.log(_ArticleArray[0]);
-        view.parent.parent.parent.animateActiveItem(articles, {type: 'cover', direction: 'left'});
+           setTimeout(function() {
+               view.parent.parent.parent.setMasked(false);
+               view.parent.parent.parent.animateActiveItem(articles, {type: 'cover', direction: 'left'});
+           }, 800);
+
     },
 
     changeDefaults: function (container, newCard, oldCard, index) {

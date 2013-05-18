@@ -1,23 +1,115 @@
+// The following two lines import the default Sencha Touch theme. If you are building
+// a new theme, remove them and the add your own CSS on top of the base CSS (which
+// is already included in your app.json file).
+@import 'sencha-touch/default';
 @import 'sencha-touch/default/all';
 
-// You may remove any of the following modules that you
-// do not use in order to create a smaller css file.
-@include sencha-panel;
-@include sencha-buttons;
-@include sencha-sheet;
-@include sencha-picker;
-@include sencha-tabs;
-@include sencha-toolbar;
-@include sencha-toolbar-forms;
-@include sencha-indexbar;
-@include sencha-list;
-@include sencha-layout;
-@include sencha-carousel;
-@include sencha-form;
-@include sencha-msgbox;
+// Custom code goes here..
 
-@include pictos-iconmask('list');
-
+// Examples of using the icon mixin:
+// @include icon('user');
+.x-list .x-list-item.x-item-selected .x-dock-horizontal {
+  background: #f2f2f2;
+  border-top: none;
+  color: #000;
+}
+.x-list .x-list-item.x-item-pressed .x-dock-horizontal {
+  background: #dfdfdf;
+}
+.x-toolbar-dark.x-docked-top {
+  border-bottom-color: #00adee;
+}
+.x-toolbar-dark {
+  background: #00adee;
+  border-color: #00adee;
+}
+.x-toolbar-dark .x-title {
+  color: #000;
+}
+#side-slide-menu {
+  background: #404040;
+}
+#side-slide-menu .x-toolbar:nth-of-type(1) {
+  background: #333;
+}
+#side-slide-menu .x-list-item {
+  border-bottom: 1px solid #191919;
+  -webkit-box-shadow: 0 1px 0 0 #535353;
+  box-shadow: 0 1px 0 0 #535353;
+}
+#side-slide-menu .x-list-item .x-dock-horizontal {
+  border-top: none;
+  .x-dock-body {
+    color: #ccc;
+  }
+  .x-innerhtml {
+    padding-left: 10px;
+  }
+}
+#side-slide-nav {
+ .x-button-back {
+    background-image: url('../images/back.png');
+    background-position: center center;
+    background-size: cover;
+    background-color: transparent;
+    -webkit-mask-image: none; 
+    background-repeat: no-repeat;
+    border: 0;   
+  }
+  .x-button-back:after,
+  .x-button-back:before {
+    border: 0;
+    background: transparent;
+  }
+  .x-button-back .x-button-label {
+    display: none;
+  }
+  .x-button-back {
+    padding: 0 1em;
+    margin: 0 0.2em;
+  }
+}
+#side-slide-menu .x-list-item.x-list-footer-wrap .x-dock-horizontal {
+ border-bottom: 0; 
+}
+#side-slide-menu .x-list-item.x-item-selected .x-dock-horizontal {
+  background: #333; 
+  border-bottom: 0;
+  border-top: 1px solid #535353;  
+}
+#side-slide-menu .x-list-item.x-item-pressed .x-dock-horizontal {
+  background: transparent;
+}
+#side-slide-menu .x-list-item.x-item-selected .x-dock-body {
+  border-left: 10px solid #00adee;
+  .x-innerhtml {
+    padding-left: 0;
+  }
+}
+.x-slidenavigation-list .x-field-search {
+  display: none;
+}
+#slide-trigger {
+  background-color: transparent;
+  background-image: none;
+  border: 1px solid transparent;
+}
+#slide-trigger .x-button-icon.x-icon-mask {
+  background-image: url('../images/settings.png');
+  background-size: cover;
+  background-color: transparent;
+  -webkit-mask-image: none;
+}
+#slide-trigger .x-button-icon.more:before {
+  content: '';
+}
+#slide-trigger .x-button-icon.x-icon-mask  {
+  height: 2.3em;
+  width: 2em;
+}
+#slide-trigger {
+  margin: 0 0.2em;
+}
 .feed-title {
   font-size: 16px;
   color: #25261e;
@@ -25,5 +117,5 @@
 .pub-date {
   font-size: 10px;
   font-style: italic;
-  padding: 5px 0
+  padding: 5px 0;
 }

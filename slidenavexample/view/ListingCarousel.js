@@ -33,10 +33,10 @@ Ext.define('SlideNavigationExample.view.ListingCarousel', {
                         }
                     }
                 ],
-                store: 'TcFeeds',
+                store: 'TcFeeds'
 
                 // Mask this item when the container is opened
-                maskOnOpen: true
+                //maskOnOpen: true
             },{
                 xtype: 'list',
                 cls: 'disclosurelist',
